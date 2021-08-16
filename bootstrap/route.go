@@ -1,13 +1,13 @@
 package bootstrap
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/gorilla/mux"
 	"larago/routes"
 )
 
 // SetupRoute 路由初始化
-func SetupRoute() *gin.Engine {
-	router := gin.Default()
+func SetupRoute() *mux.Router {
+	router := mux.NewRouter()
 
 	//注册Api路由
 	routes.RegisterApiRoutes(router)

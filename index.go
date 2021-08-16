@@ -1,9 +1,12 @@
 package main
 
 import (
+	"larago/app/http/middlewares"
 	"larago/bootstrap"
 	"larago/config"
 	c "larago/pkg/config"
+	"log"
+	"net/http"
 )
 
 func init() {
@@ -19,5 +22,8 @@ func main() {
 	router := bootstrap.SetupRoute()
 
 	// 监听并在 0.0.0.0:8080 上启动服务
-	_ = router.Run(":" + c.GetString("app.port"))
+	err := http.ListenAndServe(":"+c.GetString("app.port"), middlewares.RemoveTrailingSlash(router))
+	if err != nil {
+		log.Println(err)
+	}
 }
