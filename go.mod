@@ -6,6 +6,7 @@ require (
 	github.com/go-playground/validator/v10 v10.9.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/gorilla/mux v1.8.0
+	github.com/gorilla/sessions v1.2.1
 	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/spf13/cast v1.4.1
