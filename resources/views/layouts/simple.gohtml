@@ -1,0 +1,29 @@
+{{/* 定义模板 simple 名称 */}}
+{{define "simple"}}
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    {{/* 模板 title 占位 */}}
+    <title>{{template "title" .}}</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+{{/*    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">*/}}
+  </head>
+
+  <body>
+  <div class="container-sm">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 blog-main mt-5">
+
+        {{/* 模板 main 占位 */}}
+        {{template "main" .}}
+
+      </div>
+    </div>
+  </div>
+  <script src="/js/bootstrap.min.js"></script>
+  </body>
+
+  </html>
+{{end}}
