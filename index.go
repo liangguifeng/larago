@@ -5,6 +5,7 @@ import (
 	"larago/bootstrap"
 	"larago/config"
 	c "larago/pkg/config"
+	"larago/pkg/logger"
 	"log"
 	"net/http"
 )
@@ -20,6 +21,8 @@ func main() {
 
 	// 初始化路由绑定
 	router := bootstrap.SetupRoute()
+
+	logger.Info("服务器启动成功：http://localhost:" + c.GetString("app.port"))
 
 	// 监听并在 0.0.0.0:8080 上启动服务
 	err := http.ListenAndServe(":"+c.GetString("app.port"), middlewares.RemoveTrailingSlash(router))
