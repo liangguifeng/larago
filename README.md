@@ -26,9 +26,15 @@ go run index.go
 - 默认是 [http://localhost:3000](http://localhost:3000)
 
 ## 功能列表
-- [ ] gohtml模板
-- [ ] 中间件
-- [ ] 路由组
-- [ ] JWT认证
-- [ ] config配置文件自动加载
-- [ ] .env文件
+- [x] gohtml模板
+- [x] 中间件
+- [x] 路由组
+- [x] JWT认证
+- [x] config配置文件自动加载
+- [x] .env文件
+- [x] 日志
+- [x] 存储文件
+- [x] go mod管理依赖
+- [x] 分页处理
+- [x] gorm集成
+- [x] gin集成
