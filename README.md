@@ -24,3 +24,11 @@ go run index.go
 
 4. 访问控制台输出的网址
 - 默认是 [http://localhost:3000](http://localhost:3000)
+
+## 功能列表
+- [ ] gohtml模板
+- [ ] 中间件
+- [ ] 路由组
+- [ ] JWT认证
+- [ ] config配置文件自动加载
+- [ ] .env文件
