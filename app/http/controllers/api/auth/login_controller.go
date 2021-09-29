@@ -1,7 +1,6 @@
 package auth
 
 import (
-	"fmt"
 	"larago/app/http/controllers"
 	"larago/pkg/resp"
 	"larago/pkg/token"
@@ -15,10 +14,9 @@ type LoginController struct {
 
 // Login 首页
 func (ac *LoginController) Login(w http.ResponseWriter, r *http.Request) {
+	// TODO: 校验用户输入
 	username := r.PostFormValue("username")
 	password := r.PostFormValue("password")
-	// 校验账号密码
-	fmt.Println(password)
 
 	// 生成token
 	generateToken, err := token.GenerateToken(username, password)

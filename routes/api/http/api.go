@@ -18,11 +18,11 @@ func RegisterApiRoutes(router *mux.Router) {
 	// 加载需要鉴权的路由组
 	loadApiAuthTokenRouteGroups(router)
 
-	// --- 设定api路由组全局中间件 ---
+	// --- 设定 api 路由组全局中间件 ---
 	//router.Use()
 }
 
-// loadApiRouteGroups api接口路由组
+// loadApiRouteGroups api 接口路由组
 func loadApiRouteGroups(router *mux.Router) {
 	//apiRouter := router.PathPrefix("/api").Subrouter()
 
@@ -32,6 +32,7 @@ func loadApiRouteGroups(router *mux.Router) {
 	//adminApiRouter.Use()
 }
 
+// loadApiAuthRouteGroups 登录相关路由组
 func loadApiAuthRouteGroups(router *mux.Router) {
 	// 设定路由组前缀
 	apiAuthRouter := router.PathPrefix("/api/auth").Subrouter()
@@ -43,11 +44,13 @@ func loadApiAuthRouteGroups(router *mux.Router) {
 	//apiAuthRouter.Use()
 }
 
+// loadApiAuthTokenRouteGroups 需要 token 的路由组
 func loadApiAuthTokenRouteGroups(router *mux.Router) {
 	// 设定路由组前缀
 	apiRouter := router.PathPrefix("/api").Subrouter()
 
 	apiRouter.HandleFunc("/user", new(api.UserController).Index).Methods("GET").Name("api.user.index")
 
+	// --- 验证 token 中间件 ---
 	apiRouter.Use(middlewares.VerifyApiToken)
 }

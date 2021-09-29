@@ -19,8 +19,11 @@ type Claims struct {
 func GenerateToken(username, password string) (string, error) {
 	//设置token有效时间
 	nowTime := time.Now()
-	expireTime := nowTime.Add(3 * time.Hour)
 
+	// 默认24小时过期
+	expireTime := nowTime.Add(24 * time.Hour)
+
+	// TODO: 生成 token 带上可用信息
 	claims := Claims{
 		Username: username,
 		UserId:   password,

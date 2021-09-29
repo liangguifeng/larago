@@ -1,11 +1,11 @@
 package middlewares
 
 import (
-	"fmt"
 	"larago/pkg/resp"
 	"larago/pkg/token"
 	"net/http"
 	"strings"
+	"time"
 )
 
 // VerifyApiToken
@@ -24,12 +24,20 @@ func VerifyApiToken(next http.Handler) http.Handler {
 			return
 		}
 
-		// 开始校验token
+		// 获取 token 到期时间
 		expiresAt := parseToken.StandardClaims.ExpiresAt
-		fmt.Println(expiresAt)
-		//if expiresAt > time.Now() {
-		//
-		//}
+
+		// 开始校验 token
+		// 1. 校验 token 是否过期
+		if time.Now().Unix() > expiresAt {
+			resp.JsonResponse(w, 401, "token已过期，请重新获取", nil)
+			return
+		}
+
+		// 将 jwt 信息放入请求头，方便控制器获取
+		r.Header.Set("userId", parseToken.UserId)
+		r.Header.Set("userName", parseToken.Username)
+		r.Header.Set("projectId", parseToken.StandardClaims.Id)
 
 		// 将请求传递下去
 		next.ServeHTTP(w, r)
